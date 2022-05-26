@@ -60,6 +60,7 @@ export class MollieCheckoutResponseContainer extends PureComponent {
             throw Error('The URL argument "payment_token" is empty or does not exist');
         }
 
+        setIncrementId(incrementId);
         const { mollieProcessTransaction: { paymentStatus } } = await fetchMutation(MollieProcessTransactionQuery.process(paymentToken))
 
         const successfulStatuses = ['CREATED', 'PAID', 'AUTHORIZED', 'SHIPPING', 'COMPLETED'];
@@ -70,14 +71,12 @@ export class MollieCheckoutResponseContainer extends PureComponent {
                     isLoading: false,
                     paymentTotals: {},
                     checkoutStep: DETAILS_STEP,
-                    orderID: 123,
+                    orderID: incrementId,
                 }
             });
 
             return;
         }
-
-        setIncrementId(incrementId);
 
         location.href = '/cart';
     }
