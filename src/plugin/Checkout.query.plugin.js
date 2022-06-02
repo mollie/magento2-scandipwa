@@ -1,15 +1,13 @@
 import { Field } from 'Util/Query';
 
-const _getOrderField = (args, callback, instance) => {
-    return callback()
-        .addFieldList([
-            'mollie_redirect_url',
-            'mollie_payment_token',
-        ])
-}
+const _getOrderField = (args, callback) => callback(args)
+    .addFieldList([
+        'mollie_redirect_url',
+        'mollie_payment_token'
+    ]);
 
-const _getPaymentMethodFields = (args, callback, instance) => ([
-    ...callback(),
+const _getPaymentMethodFields = (args, callback) => ([
+    ...callback(args),
     new Field('mollie_meta').addFieldList([
         'image'
     ]),
@@ -18,14 +16,14 @@ const _getPaymentMethodFields = (args, callback, instance) => ([
         'code',
         'image',
         'svg'
-    ]),
-])
+    ])
+]);
 
 export default {
-    "Query/Checkout/Query": {
-        "member-function": {
-            _getOrderField: _getOrderField,
-            _getPaymentMethodFields: _getPaymentMethodFields,
+    'Query/Checkout/Query': {
+        'member-function': {
+            _getOrderField,
+            _getPaymentMethodFields
         }
     }
-}
+};

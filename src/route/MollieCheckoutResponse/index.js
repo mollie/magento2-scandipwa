@@ -1,1 +1,1 @@
-export { default } from './MollieCheckoutResponse.container'
+export { default } from './MollieCheckoutResponse.container';
