@@ -1,45 +1,75 @@
-import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Fragment, PureComponent } from 'react';
 
-import './MollieIssuer.style.scss'
+import './MollieIssuer.style.scss';
 
-export class MollieIssuerComponent extends PureComponent
-{
+/** @namespace Mollie/Scandipwa/Component/MollieIssuer/Component */
+export class MollieIssuerComponent extends PureComponent {
     static propTypes = {
+        selectedIssuer: PropTypes.string.isRequired,
         setSelectedIssuer: PropTypes.func.isRequired,
+        data: PropTypes.shape({
+            mollie_available_issuers: PropTypes.arrayOf(
+                PropTypes.shape({
+                    code: PropTypes.string.isRequired
+                })
+            ).isRequired
+        }).isRequired
+    };
+
+    renderImage(issuer) {
+        return <img className="mollie-issuer-logo" src={ issuer.svg } alt={ `Logo of ${ issuer.name}` } />;
     }
 
-    setSelectedIssuer = (event) => {
-        this.props.setSelectedIssuer(event.target.value)
+    renderInput(issuer) {
+        const {
+            selectedIssuer,
+            setSelectedIssuer
+        } = this.props;
+
+        return (
+            <>
+                <input
+                  name="mollie_issuer"
+                  value={ issuer.code }
+                  type="radio"
+                  checked={ selectedIssuer === issuer.code }
+                  onChange={ setSelectedIssuer }
+                />
+                <div className="input-control" />
+            </>
+        );
+    }
+
+    renderIssuer(issuer) {
+        return (
+            <div key={ issuer.code }>
+                <div className="Field Field_type_radio">
+                    { this.renderInput(issuer) }
+                    { this.renderImage(issuer) }
+                    { issuer.name }
+                </div>
+            </div>
+        );
     }
 
     render() {
-        if (!this.props.data.mollie_available_issuers) {
+        const {
+            data: {
+                mollie_available_issuers
+            }
+        } = this.props;
+
+        if (!mollie_available_issuers) {
             return null;
         }
 
         return (
             <div block="MollieIssuer">
-                {this.props.data.mollie_available_issuers.map( issuer => (
-                    <div key={issuer.code}>
-                        <div className="Field Field_type_radio">
-                            <input
-                                name="mollie_issuer"
-                                value={issuer.code}
-                                type="radio"
-                                checked={this.props.selectedIssuer === issuer.code}
-                                onChange={this.setSelectedIssuer}
-                            />
-                            <div className="input-control"></div>
-
-                            <img className='mollie-issuer-logo' src={issuer.svg} alt={'Logo of ' + issuer.name} />
-                            {issuer.name}
-                        </div>
-                    </div>
-                ))}
+                { mollie_available_issuers.map((issuer) => this.renderIssuer(issuer)) }
             </div>
         );
     }
 }
 
-export default MollieIssuerComponent
+export default MollieIssuerComponent;

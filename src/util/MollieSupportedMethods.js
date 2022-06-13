@@ -1,4 +1,4 @@
-const MOLLIE_METHODS = [
+export const MOLLIE_METHODS = [
     'mollie_methods_applepay',
     'mollie_methods_bancontact',
     'mollie_methods_banktransfer',
@@ -18,7 +18,7 @@ const MOLLIE_METHODS = [
     'mollie_methods_paypal',
     'mollie_methods_paysafecard',
     'mollie_methods_przelewy24',
-    'mollie_methods_sofort',
+    'mollie_methods_sofort'
 ];
 
 export default MOLLIE_METHODS;

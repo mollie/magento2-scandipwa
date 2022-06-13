@@ -1,18 +1,20 @@
 import BrowserDatabase from 'Util/BrowserDatabase';
-import { ONE_MONTH_IN_SECONDS } from 'Util/Request/QueryDispatcher';
 
-const DATABASE_KEY = 'mollie_selected_issuer';
+export const DATABASE_KEY = 'mollie_selected_issuer';
+export const ONE_HOUR_IN_SECONDS = 3600;
 
+/** @namespace Mollie/Scandipwa/Util/SelectedIssuerPersistence/setSelectedIssuer */
 export const setSelectedIssuer = (method, code) => {
-    BrowserDatabase.setItem(code, DATABASE_KEY + '_' + method, ONE_MONTH_IN_SECONDS);
+    BrowserDatabase.setItem(code, `${DATABASE_KEY }_${ method}`, ONE_HOUR_IN_SECONDS);
 };
 
+/** @namespace Mollie/Scandipwa/Util/SelectedIssuerPersistence/getSelectedIssuer */
 export const getSelectedIssuer = (method) => {
-    const issuer = BrowserDatabase.getItem(DATABASE_KEY + '_' + method);
+    const issuer = BrowserDatabase.getItem(`${DATABASE_KEY }_${ method}`);
 
-    if (!Boolean(issuer)) {
-        throw Error("No SelectedIssuer found in browser database")
+    if (!issuer) {
+        throw Error('No SelectedIssuer found in browser database');
     }
 
-    return issuer
+    return issuer;
 };

@@ -1,8 +1,7 @@
-import MollieIssuer from '../component/MollieIssuer';
 import Field from 'Component/Field';
 import FIELD_TYPE from 'Component/Field/Field.config';
 
-const render = (callback, args, instance) => {
+const render = (args, callback, instance) => {
     const {
         isSelected,
         method: {
@@ -10,32 +9,32 @@ const render = (callback, args, instance) => {
             code,
             mollie_meta
         }
-    } = args.props;
+    } = instance.props;
 
     if (!code.startsWith('mollie_')) {
-        return callback;
+        return callback(args);
     }
 
-    return () => (
+    return (
         <li block="CheckoutPayment">
             <button
-                block="CheckoutPayment"
-                mods={ { isSelected } }
-                elem="Button"
-                type="button"
-                onClick={ args.onClick }
+              block="CheckoutPayment"
+              mods={ { isSelected } }
+              elem="Button"
+              type="button"
+              onClick={ instance.onClick }
             >
-                <img className="mollie-issuer-logo" src={mollie_meta.image} alt={title} />
+                <img className="mollie-issuer-logo" src={ mollie_meta.image } alt={ title } />
 
                 <Field
-                    type={ FIELD_TYPE.checkbox }
-                    attr={ {
-                        id: `option-${ title }`,
-                        name: `option-${ title }`,
-                        checked: isSelected
-                    } }
-                    label={ title }
-                    isDisabled={ false }
+                  type={ FIELD_TYPE.checkbox }
+                  attr={ {
+                      id: `option-${ title }`,
+                      name: `option-${ title }`,
+                      checked: isSelected
+                  } }
+                  label={ title }
+                  isDisabled={ false }
                 />
             </button>
         </li>
@@ -44,7 +43,7 @@ const render = (callback, args, instance) => {
 
 export default {
     'Component/CheckoutPayment/Component': {
-        'member-property': {
+        'member-function': {
             render
         }
     }
