@@ -1,7 +1,7 @@
 import CheckoutQuery from 'Query/Checkout.query';
 import { DETAILS_STEP } from 'Route/Checkout/Checkout.config';
 import { isSignedIn } from 'Util/Auth';
-import { getGuestQuoteId } from 'Util/Cart';
+import { getCartId } from 'Util/Cart';
 import { fetchMutation } from 'Util/Request';
 
 import { deleteIncrementId, getIncrementId } from '../util/IncrementIDPersistence';
@@ -51,11 +51,11 @@ const savePaymentMethodAndPlaceOrder = async (args, callback, instance) => {
     }
 
     const { paymentMethod: { code, additional_data, purchase_order_number } } = paymentInformation;
-    const guest_cart_id = !isSignedIn() ? getGuestQuoteId() : '';
+    const cart_id = !isSignedIn() ? getCartId() : '';
 
     try {
         await fetchMutation(CheckoutQuery.getSetPaymentMethodOnCartMutation({
-            guest_cart_id,
+            cart_id,
             payment_method: {
                 code,
                 [code]: additional_data,
@@ -64,7 +64,7 @@ const savePaymentMethodAndPlaceOrder = async (args, callback, instance) => {
             }
         }));
 
-        const orderData = await fetchMutation(CheckoutQuery.getPlaceOrderMutation(guest_cart_id));
+        const orderData = await fetchMutation(CheckoutQuery.getPlaceOrderMutation(cart_id));
         const { placeOrder: { order: { mollie_redirect_url, mollie_payment_token } } } = orderData;
 
         if (!mollie_payment_token) {

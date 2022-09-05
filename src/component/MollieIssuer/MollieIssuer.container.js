@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import CheckoutQuery from 'Query/Checkout.query';
-import { getGuestQuoteId } from 'Util/Cart';
+import { getCartId } from 'Util/Cart';
 import { fetchQuery } from 'Util/Request';
 
 import { getSelectedIssuer, setSelectedIssuer } from '../../util/SelectedIssuerPersistence';
@@ -53,7 +53,7 @@ export class MollieIssuerContainer extends PureComponent {
 
     _getPaymentMethods() {
         fetchQuery(CheckoutQuery.getPaymentMethodsQuery(
-            getGuestQuoteId()
+            getCartId()
         )).then(
             /** @namespace Mollie/Scandipwa/Component/MollieIssuer/Container/MollieIssuerContainer/_getPaymentMethods/fetchQuery/then */
             ({ getPaymentMethods: paymentMethods }) => {
