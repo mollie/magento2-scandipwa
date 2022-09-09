@@ -1,7 +1,7 @@
 {
     "name": "@mollie/scandipwa",
     "description": "Mollie payment gateway for ScandiPWA",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "OSL-3.0",
     "scandipwa": {
         "type": "extension"
