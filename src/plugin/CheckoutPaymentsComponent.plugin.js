@@ -14,6 +14,7 @@ const paymentRenderMap = (originalMember) => ({
     mollie_methods_giftcard: mollieIssuerRender('mollie_methods_giftcard').bind(this),
     mollie_methods_giropay: mollieIssuerRender('mollie_methods_giropay').bind(this),
     mollie_methods_ideal: mollieIssuerRender('mollie_methods_ideal').bind(this),
+    mollie_methods_in3: mollieIssuerRender('mollie_methods_in3').bind(this),
     mollie_methods_kbc: mollieIssuerRender('mollie_methods_kbc').bind(this),
     mollie_methods_klarnapaylater: mollieIssuerRender('mollie_methods_klarnapaylater').bind(this),
     mollie_methods_klarnapaynow: mollieIssuerRender('mollie_methods_klarnapaynow').bind(this),
