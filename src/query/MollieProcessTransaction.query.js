@@ -1,4 +1,4 @@
-import { Field } from 'Util/Query';
+import { Field } from '@tilework/opus';
 
 /** @namespace Mollie/Scandipwa/Query/MollieProcessTransaction/Query */
 export class MollieProcessTransactionQuery {
