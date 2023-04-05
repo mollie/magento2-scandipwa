@@ -1,8 +1,8 @@
 import CheckoutQuery from 'Query/Checkout.query';
 import { CheckoutSteps } from 'Route/Checkout/Checkout.config';
-import { isSignedIn } from 'Util/Auth';
+import { isSignedIn } from 'Util/Auth/IsSignedIn';
 import { getCartId } from 'Util/Cart';
-import { fetchMutation } from 'Util/Request';
+import { fetchMutation } from 'Util/Request/Mutation';
 
 import { deleteIncrementId, getIncrementId } from '../util/IncrementIDPersistence';
 import MOLLIE_METHODS from '../util/MollieSupportedMethods';
