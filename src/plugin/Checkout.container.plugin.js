@@ -1,5 +1,5 @@
 import CheckoutQuery from 'Query/Checkout.query';
-import { DETAILS_STEP } from 'Route/Checkout/Checkout.config';
+import { CheckoutSteps } from 'Route/Checkout/Checkout.config';
 import { isSignedIn } from 'Util/Auth';
 import { getCartId } from 'Util/Cart';
 import { fetchMutation } from 'Util/Request';
@@ -16,7 +16,7 @@ const __construct = (args, callback, instance) => {
         // If there is a Mollie increment ID set the current step to the succes page.
         instance.setState({
             orderID: getIncrementId(),
-            checkoutStep: DETAILS_STEP
+            checkoutStep: CheckoutSteps.DETAILS_STEP
         });
     } catch (Error) {
         // No Mollie increment ID set, continue with the original flow.
