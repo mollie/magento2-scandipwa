@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { CheckoutStepUrl } from 'Route/Checkout/Checkout.config';
+import { CheckoutSteps, CheckoutStepUrl } from 'Route/Checkout/Checkout.config';
 import history from 'Util/History';
 import { fetchMutation } from 'Util/Request/Mutation';
 import { appendWithStoreCode, getQueryParam } from 'Util/Url';
