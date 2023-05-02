@@ -1,5 +1,5 @@
 import Field from 'Component/Field';
-import FieldType from 'Component/Field/Field.config';
+import { FieldType } from 'Component/Field/Field.config';
 
 const render = (args, callback, instance) => {
     const {
@@ -27,7 +27,7 @@ const render = (args, callback, instance) => {
                 <img className="mollie-issuer-logo" src={ mollie_meta.image } alt={ title } />
 
                 <Field
-                  type={ FieldType.checkbox }
+                  type={ FieldType.CHECKBOX }
                   attr={ {
                       id: `option-${ title }`,
                       name: `option-${ title }`,
