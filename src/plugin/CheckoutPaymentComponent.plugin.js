@@ -27,7 +27,7 @@ const render = (args, callback, instance) => {
                 <img className="mollie-issuer-logo" src={ mollie_meta.image } alt={ title } />
 
                 <Field
-                  type={ FieldType.checkbox }
+                  type={ FieldType.CHECKBOX }
                   attr={ {
                       id: `option-${ title }`,
                       name: `option-${ title }`,
