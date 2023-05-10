@@ -1,5 +1,5 @@
 # Mollie for ScandiPWA
-## version 1.1.0
+## version 1.2.0
 
 This module is created as a support for https://github.com/mollie/magento2
 
