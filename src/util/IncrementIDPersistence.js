@@ -1,5 +1,5 @@
 import BrowserDatabase from 'Util/BrowserDatabase';
-import { FIVE_MINUTES_IN_SECONDS } from 'Util/Request/QueryDispatcher';
+import { FIVE_MINUTES_IN_SECONDS } from 'Util/Request/Config';
 
 export const KEY = 'mollie_increment_id';
 

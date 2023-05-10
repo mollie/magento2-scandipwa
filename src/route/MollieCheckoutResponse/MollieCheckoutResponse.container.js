@@ -1,12 +1,11 @@
-import { CHECKOUT_URL } from '@scandipwa/scandipwa/src/route/Checkout/Checkout.config';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { DETAILS_STEP } from 'Route/Checkout/Checkout.config';
+import { CheckoutSteps, CheckoutStepUrl } from 'Route/Checkout/Checkout.config';
 import history from 'Util/History';
-import { fetchMutation } from 'Util/Request';
+import { fetchMutation } from 'Util/Request/Mutation';
 import { appendWithStoreCode, getQueryParam } from 'Util/Url';
 
 import MollieProcessTransactionQuery from '../../query/MollieProcessTransaction.query';
@@ -78,11 +77,11 @@ export class MollieCheckoutResponseContainer extends PureComponent {
 
         setIncrementId(incrementId);
         history.push({
-            pathname: appendWithStoreCode(`${ CHECKOUT_URL }/success`),
+            pathname: appendWithStoreCode(`${ CheckoutStepUrl.CHECKOUT_URL }/success`),
             state: {
                 isLoading: false,
                 paymentTotals: {},
-                checkoutStep: DETAILS_STEP,
+                checkoutStep: CheckoutSteps.DETAILS_STEP,
                 orderID: incrementId
             }
         });

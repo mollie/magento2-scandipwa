@@ -1,4 +1,4 @@
-import { Field } from 'Util/Query';
+import { Field } from '@tilework/opus';
 
 const _getOrderField = (args, callback) => callback(args)
     .addFieldList([

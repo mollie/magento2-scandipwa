@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import CheckoutQuery from 'Query/Checkout.query';
 import { getCartId } from 'Util/Cart';
-import { fetchQuery } from 'Util/Request';
+import { fetchQuery } from 'Util/Request/Query';
 
 import { getSelectedIssuer, setSelectedIssuer } from '../../util/SelectedIssuerPersistence';
 import MollieIssuerComponent from './MollieIssuer.component';
