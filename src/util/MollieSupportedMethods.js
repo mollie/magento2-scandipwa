@@ -19,7 +19,8 @@ export const MOLLIE_METHODS = [
     'mollie_methods_paypal',
     'mollie_methods_paysafecard',
     'mollie_methods_przelewy24',
-    'mollie_methods_sofort'
+    'mollie_methods_sofort',
+    'mollie_methods_twint'
 ];
 
 export default MOLLIE_METHODS;
