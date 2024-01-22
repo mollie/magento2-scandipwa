@@ -24,7 +24,8 @@ const paymentRenderMap = (originalMember) => ({
     mollie_methods_paypal: mollieIssuerRender('mollie_methods_paypal').bind(this),
     mollie_methods_paysafecard: mollieIssuerRender('mollie_methods_paysafecard').bind(this),
     mollie_methods_przelewy24: mollieIssuerRender('mollie_methods_przelewy24').bind(this),
-    mollie_methods_sofort: mollieIssuerRender('mollie_methods_sofort').bind(this)
+    mollie_methods_sofort: mollieIssuerRender('mollie_methods_sofort').bind(this),
+    mollie_methods_twint: mollieIssuerRender('mollie_methods_twint').bind(this)
 });
 
 export default {
