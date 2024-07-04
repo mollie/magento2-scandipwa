@@ -16,7 +16,6 @@ const paymentRenderMap = (originalMember) => ({
     mollie_methods_directdebit: mollieIssuerRender('mollie_methods_directdebit').bind(this),
     mollie_methods_eps: mollieIssuerRender('mollie_methods_eps').bind(this),
     mollie_methods_giftcard: mollieIssuerRender('mollie_methods_giftcard').bind(this),
-    mollie_methods_giropay: mollieIssuerRender('mollie_methods_giropay').bind(this),
     mollie_methods_ideal: mollieIssuerRender('mollie_methods_ideal').bind(this),
     mollie_methods_in3: mollieIssuerRender('mollie_methods_in3').bind(this),
     mollie_methods_kbc: mollieIssuerRender('mollie_methods_kbc').bind(this),
@@ -30,6 +29,7 @@ const paymentRenderMap = (originalMember) => ({
     mollie_methods_przelewy24: mollieIssuerRender('mollie_methods_przelewy24').bind(this),
     mollie_methods_riverty: mollieIssuerRender('mollie_methods_riverty').bind(this),
     mollie_methods_sofort: mollieIssuerRender('mollie_methods_sofort').bind(this),
+    mollie_methods_trustly: mollieIssuerRender('mollie_methods_trustly').bind(this),
     mollie_methods_twint: mollieIssuerRender('mollie_methods_twint').bind(this),
     mollie_methods_voucher: mollieIssuerRender('mollie_methods_voucher').bind(this),
 });
